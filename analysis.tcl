@@ -1,22 +1,16 @@
-# Function to determine if a value is an integer
 proc isInteger {val} {
     return [regexp {^-?\d+$} $val]
 }
-
-# Function to determine if a value is a float
 proc isFloat {val} {
     return [regexp {^-?\d+\.\d+$} $val]
 }
 
-# Initialize sum and string count
 set sum 0
 set stringCount 0
 
-# Open the file
 set filename "input.txt"
 set file [open $filename]
 
-# Process each line
 while {[gets $file line] >= 0} {
     if { [isInteger $line] } {
         if { [expr {$line % 2}] == 0 } {
@@ -37,9 +31,7 @@ while {[gets $file line] >= 0} {
         puts "INVALID"
     }
 }
-# Close the file
-close $file
 
-# Output the sum and string count
+close $file
 puts "Sum of integers: $sum"
 puts "Count of lines that present a string value: $stringCount"
